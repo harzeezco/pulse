@@ -134,13 +134,18 @@ export function Header() {
         </ul>
       </nav>
 
-      <button className='max-md:hidden' type='button'>
+      <Button
+        className='max-md:hidden'
+        type='button'
+        variant='primary'
+      >
         Get Started
-      </button>
+      </Button>
 
-      <div className='absolute left-1/2 top-0 -translate-x-1/2'>
+      <div className='absolute left-1/2 top-0 w-[800px] -translate-x-1/2'>
         <Image
           alt='header-blur'
+          className='h-[400px] w-full'
           height={700}
           src='/images/header-blur.png'
           width={700}
