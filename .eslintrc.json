@@ -12,6 +12,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "ignorePatterns": "./postcss.config.js",
   "env": {
     "jest": true,
     "node": true,
