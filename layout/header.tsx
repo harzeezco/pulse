@@ -14,7 +14,6 @@ import {
 } from '@/components/drawer';
 import Logo from '@/components/logo';
 import { AlignRight, Minus, Plus } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { Container } from './container';
@@ -113,50 +112,50 @@ export function DrawerBar({
 
 export function Header() {
   return (
-    <Container
-      as='header'
-      className='mt-6 flex items-center justify-between rounded-[100px] bg-light-100 py-3 shadow-header'
-    >
-      <Logo />
-      <nav className='max-md:hidden'>
-        <ul className='relative z-50 flex items-center gap-8'>
-          {NAVLINKS.map(({ href, name }) => (
-            <li className='text-lg font-medium capitalize'>
-              <Link
-                key={name}
-                className='w-full transition-all hover:text-white'
-                href={href}
-              >
-                {name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <section className='max-md:px-4'>
+      <Container className='mt-6 flex items-center justify-between rounded-[100px] bg-light-100 py-3 shadow-header'>
+        <Logo />
+        <nav className='max-md:hidden'>
+          <ul className='relative z-50 flex items-center gap-5 lg:gap-8'>
+            {NAVLINKS.map(({ href, name }) => (
+              <li className='text-lg font-medium capitalize'>
+                <Link
+                  key={name}
+                  className='w-full transition-all hover:text-white'
+                  href={href}
+                >
+                  {name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-      <Button
-        className='max-md:hidden'
-        type='button'
-        variant='primary'
-      >
-        Get Started
-      </Button>
+        <Button
+          className='max-md:hidden'
+          type='button'
+          variant='primary'
+        >
+          Get Started
+        </Button>
 
-      <div className='absolute left-1/2 top-0 w-[800px] -translate-x-1/2'>
-        <Image
-          alt='header-blur'
-          className='h-[400px] w-full'
-          height={700}
-          src='/images/header-blur.png'
-          width={700}
+        <div
+          className='absolute left-1/2 top-0 max-w-[900px] -translate-x-1/2 max-sm:max-h-[800px]'
+          style={{
+            backgroundImage: 'url(/images/header-blur.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'contain',
+            width: '100%',
+            height: '100%',
+          }}
         />
-      </div>
 
-      <div className='pr-3 md:hidden'>
-        <DrawerBar>
-          <AlignRight size={35} />
-        </DrawerBar>
-      </div>
-    </Container>
+        <div className='relative z-50 pr-3 md:hidden'>
+          <DrawerBar>
+            <AlignRight size={35} />
+          </DrawerBar>
+        </div>
+      </Container>
+    </section>
   );
 }
