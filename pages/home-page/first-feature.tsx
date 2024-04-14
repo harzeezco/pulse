@@ -6,7 +6,7 @@ function FirstFeature() {
   return (
     <Container
       as='section'
-      className='mt-14 flex items-center justify-between gap-y-7 max-md:flex-col'
+      className='mt-14 flex items-center justify-between gap-x-5 gap-y-7 max-md:flex-col'
     >
       <div>
         <p className='flex items-center gap-3 text-white'>
