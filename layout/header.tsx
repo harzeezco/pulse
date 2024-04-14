@@ -118,7 +118,10 @@ export function Header() {
         <nav className='max-md:hidden'>
           <ul className='relative z-50 flex items-center gap-5 lg:gap-8'>
             {NAVLINKS.map(({ href, name }) => (
-              <li className='text-lg font-medium capitalize'>
+              <li
+                key={href}
+                className='text-lg font-medium capitalize'
+              >
                 <Link
                   key={name}
                   className='w-full transition-all hover:text-white'
