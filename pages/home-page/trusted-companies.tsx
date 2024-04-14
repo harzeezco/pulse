@@ -32,11 +32,11 @@ const COMPANIES: CompanyProps[] = [
 function TrustedCompanies() {
   return (
     <Container as='section' className='py-14 text-center'>
-      <h1 className='text-2xl font-medium'>
+      <h1 className='text-xl font-medium md:text-2xl'>
         The world&apos;s best companies trust Us.
       </h1>
 
-      <ul className='mt-6 flex shrink flex-wrap items-center justify-between gap-5'>
+      <ul className='mt-6 flex shrink flex-wrap items-center justify-center gap-7 lg:justify-between'>
         {COMPANIES.map(({ icon, name }) => (
           <li key={name}>
             <Image
