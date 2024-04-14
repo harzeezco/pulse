@@ -18,7 +18,7 @@ export default function Hero() {
           </span>
         </p>
 
-        <h1 className='mt-5 max-w-2xl text-center text-3xl font-medium md:text-4xl lg:text-6xl'>
+        <h1 className='mt-5 max-w-2xl text-center text-3xl font-medium md:text-4xl lg:text-5xl'>
           <span className='bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-transparent'>
             The best way to improve your users
           </span>{' '}
