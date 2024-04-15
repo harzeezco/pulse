@@ -1,4 +1,6 @@
 import { Header } from '@/layout';
+import CTA from '@/layout/cta';
+import Footer from '@/layout/footer';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -24,6 +26,8 @@ export default function RootLayout({
       <body className='bg-[#191919] text-[#BABABA]'>
         <Header />
         {children}
+        <CTA />
+        <Footer />
       </body>
     </html>
   );
