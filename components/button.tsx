@@ -3,8 +3,10 @@ import { cn } from '@/utils/cn';
 import React, { ReactNode } from 'react';
 
 const Variants = {
-  primary: 'bg-green-500 text-white active:scale-95',
+  primary:
+    'flex gap-3 cursor-pointer text-white bg-blue-500 px-7 py-3 rounded-full border border-[#5964ff] hover:scale-105 shadow-btn duration-200 hover:shadow-sm ',
   outline: '',
+  dark: 'rounded-[100px] bg-dark-400 px-8 py-3 text-white shadow-header hover:bg-dark-400/60 active:bg-dark-400/60',
 };
 
 const sizes = {

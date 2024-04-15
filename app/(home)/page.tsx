@@ -1,5 +1,7 @@
+import Hero from '@/pages/home-page/hero';
+
 function HomePage() {
-  return <div>HomePage</div>;
+  return <Hero />;
 }
 
 export default HomePage;

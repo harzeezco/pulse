@@ -21,12 +21,19 @@ const config = {
     },
     extend: {
       colors: {
+        blue: {
+          500: '#232ed1',
+        },
         light: {
           100: '#1e1e1f',
+        },
+        dark: {
+          400: '#1E1E1E',
         },
       },
       boxShadow: {
         header: '0px 0px 2px inset rgba(250, 250, 250, 0.2)',
+        btn: '0 10px 10px inset #5964ff',
       },
       keyframes: {
         'accordion-down': {
