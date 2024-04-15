@@ -86,7 +86,7 @@ function BlogDetails({
 function Blog() {
   return (
     <Container as='section' className='mt-16'>
-      <div className='flex items-center justify-between'>
+      <div className='flex items-center justify-between gap-y-3 max-md:flex-col max-sm:items-start'>
         <h1 className='text-center text-4xl font-medium'>
           Blog & Articles
         </h1>
