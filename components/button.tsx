@@ -12,6 +12,7 @@ const Variants = {
 const sizes = {
   sm: 'px-7 py-3 rounded-[10px]',
   md: 'px-7 py-3 font-medium w-fit',
+  full: 'w-full',
 };
 
 type ButtonType = React.ButtonHTMLAttributes<HTMLButtonElement> & {
