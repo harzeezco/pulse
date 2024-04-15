@@ -91,7 +91,7 @@ function Blog() {
           Blog & Articles
         </h1>
 
-        <Button variant='dark'>See All Posts</Button>
+        <Button variant='dark'>See All</Button>
       </div>
       <ul className='mt-7 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3'>
         {BLOG_DATA.map((details) => (

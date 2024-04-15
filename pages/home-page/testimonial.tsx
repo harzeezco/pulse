@@ -55,7 +55,7 @@ export default function Testimonial() {
       </p>
 
       <div className='relative'>
-        <div className='grid place-items-center gap-y-6 md:grid-cols-2 md:gap-x-5 lg:gap-x-10'>
+        <div className='grid place-items-center max-md:gap-y-6 md:grid-cols-2 md:gap-x-5 lg:gap-x-10'>
           {TESTIMONIAL.map(({ avatar, desc, job, name, rating }) => (
             <div
               key={name}
