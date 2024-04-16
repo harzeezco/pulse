@@ -123,7 +123,7 @@ function Footer() {
           <div className=''>
             <InputBox
               className='w-[300px] !rounded-[100px] border border-solid border-[#292929] !bg-[#1e1e1e] md:w-[450px] lg:w-[300px]'
-              inputClassName='!rounded-[100px] placeholder:text-[#666D80] text-dark-900'
+              inputClassName='!rounded-[100px] border border-solid border-[#292929] !bg-[#1e1e1e]  placeholder:text-[#666D80] text-dark-900'
               placeholder='Your Email'
               renderInner={() => (
                 <Button

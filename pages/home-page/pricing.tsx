@@ -73,7 +73,7 @@ export default function Pricing() {
           every time, without fail.
         </p>
 
-        <div className='md: relative z-[99] mx-auto flex shrink grid-cols-1 flex-wrap place-items-center justify-center gap-10 lg:grid lg:grid-cols-3'>
+        <div className='relative z-[99] mx-auto flex shrink grid-cols-1 flex-wrap place-items-center justify-center gap-10 lg:grid lg:grid-cols-3'>
           {PRICING.map(
             ({ amount, category, features, height, plan, type }) => (
               <div
