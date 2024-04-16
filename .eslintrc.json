@@ -41,6 +41,7 @@
         "object-curly-newline": "off",
         "no-restricted-syntax": "off",
         "no-prototype-builtins": "off",
+        "@typescript-eslint/no-use-before-define": "off",
         "function-paren-newline": "off",
         "newline-per-chained-call": "off",
         "jsx-quotes": ["error", "prefer-single"],

@@ -13,8 +13,10 @@ import {
   DrawerTrigger,
 } from '@/components/drawer';
 import Logo from '@/components/logo';
+import { cn } from '@/utils/cn';
 import { AlignRight, Minus, Plus } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import { Container } from './container';
 
@@ -25,8 +27,8 @@ type NavlinkProps = {
 
 const NAVLINKS: NavlinkProps[] = [
   {
-    name: 'product',
-    href: '/product',
+    name: 'Home',
+    href: '/',
   },
   {
     name: 'company',
@@ -83,7 +85,7 @@ export function DrawerBar({
                 <div className='text-7xl font-bold tracking-tighter'>
                   {goal}
                 </div>
-                <div className='text-muted-foreground text-[0.70rem] uppercase'>
+                <div className='text-[0.70rem] uppercase'>
                   Calories/day
                 </div>
               </div>
@@ -111,31 +113,40 @@ export function DrawerBar({
 }
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <section className='max-md:px-4'>
-      <Container className='mt-6 flex items-center justify-between rounded-[100px] bg-light-100 py-3 shadow-header'>
+      <Container className='left-1/2 top-3 mt-6 flex items-center justify-between rounded-[100px] bg-light-100 py-3 shadow-header'>
         <Logo />
         <nav className='max-md:hidden'>
           <ul className='relative z-50 flex items-center gap-5 lg:gap-8'>
-            {NAVLINKS.map(({ href, name }) => (
-              <li
-                key={href}
-                className='text-lg font-medium capitalize'
-              >
-                <Link
-                  key={name}
-                  className='w-full transition-all hover:text-white'
-                  href={href}
+            {NAVLINKS.map(({ href, name }) => {
+              const isActive = pathname === href;
+
+              return (
+                <li
+                  key={href}
+                  className='text-lg font-medium capitalize'
                 >
-                  {name}
-                </Link>
-              </li>
-            ))}
+                  <Link
+                    key={name}
+                    className={cn(
+                      'w-full transition-all hover:text-blue-500',
+                      isActive ? 'font-semibold text-white' : '',
+                    )}
+                    href={href}
+                  >
+                    {name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
         <Button
-          className='max-md:hidden'
+          className='relative z-50 max-md:hidden'
           type='button'
           variant='primary'
         >

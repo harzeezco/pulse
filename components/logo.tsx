@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 function Logo() {
   return (
-    <Link className='flex items-center gap-3' href='/'>
+    <Link className='relative z-50 flex items-center gap-3' href='/'>
       <Image
         alt='logo'
         height={40}

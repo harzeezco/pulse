@@ -7,7 +7,7 @@ function CTA() {
     <section className='relative my-20'>
       <Container>
         <div
-          className='flex items-center justify-between gap-y-6 rounded-b-2xl p-16 max-sm:flex-col'
+          className='gapy flex items-center justify-between rounded-b-2xl p-16 max-sm:flex-col'
           style={{
             backgroundImage: 'url(/images/cta-banner.png)',
             backgroundSize: 'cover',
