@@ -6,15 +6,14 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from '@/components/drawer';
 import Logo from '@/components/logo';
-import { AlignRight, Minus, Plus } from 'lucide-react';
+import { cn } from '@/utils/cn';
+import { AlignRight } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import { Container } from './container';
 
@@ -25,8 +24,8 @@ type NavlinkProps = {
 
 const NAVLINKS: NavlinkProps[] = [
   {
-    name: 'product',
-    href: '/product',
+    name: 'Home',
+    href: '/',
   },
   {
     name: 'company',
@@ -51,57 +50,41 @@ export function DrawerBar({
 }: {
   children: React.ReactNode;
 }) {
-  const [goal, setGoal] = React.useState(350);
-
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)));
-  }
+  const pathname = usePathname();
 
   return (
     <Drawer>
-      <DrawerTrigger asChild>{children}</DrawerTrigger>
+      <DrawerTrigger asChild className='cursor-pointer'>
+        {children}
+      </DrawerTrigger>
       <DrawerContent>
-        <div className='mx-auto w-full max-w-sm'>
-          <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>
-              Set your daily activity goal.
-            </DrawerDescription>
-          </DrawerHeader>
-          <div className='p-4 pb-0'>
-            <div className='flex items-center justify-center space-x-2'>
-              <Button
-                className='size-8 shrink-0 rounded-full'
-                disabled={goal <= 200}
-                variant='outline'
-                onClick={() => onClick(-10)}
-              >
-                <Minus className='size-4' />
-                <span className='sr-only'>Decrease</span>
-              </Button>
-              <div className='flex-1 text-center'>
-                <div className='text-7xl font-bold tracking-tighter'>
-                  {goal}
+        <div className='px-6'>
+          <div className='flex flex-col gap-4'>
+            {NAVLINKS.map(({ href, name }) => {
+              const isActive = href === pathname;
+
+              return (
+                <div key={name}>
+                  <Link key={href} href={href}>
+                    <div
+                      className={cn(
+                        isActive
+                          ? 'bg-dark-400 font-semibold'
+                          : 'bg-transparent font-medium',
+                        'text-lg transition-all p-4 py-3 duration-200 hover:bg-dark-400 active:bg-dark-400 w-full rounded-2xl',
+                      )}
+                    >
+                      {name}
+                    </div>
+                  </Link>
                 </div>
-                <div className='text-muted-foreground text-[0.70rem] uppercase'>
-                  Calories/day
-                </div>
-              </div>
-              <Button
-                className='size-8 shrink-0 rounded-full'
-                disabled={goal >= 400}
-                variant='outline'
-                onClick={() => onClick(10)}
-              >
-                <Plus className='size-4' />
-                <span className='sr-only'>Increase</span>
-              </Button>
-            </div>
+              );
+            })}
           </div>
+
           <DrawerFooter>
-            <Button>Submit</Button>
             <DrawerClose asChild>
-              <Button variant='outline'>Cancel</Button>
+              <Button>Close</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>
@@ -111,31 +94,40 @@ export function DrawerBar({
 }
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <section className='max-md:px-4'>
-      <Container className='mt-6 flex items-center justify-between rounded-[100px] bg-light-100 py-3 shadow-header'>
+      <Container className='left-1/2 top-3 mt-6 flex items-center justify-between rounded-[100px] bg-light-100 py-3 shadow-header'>
         <Logo />
         <nav className='max-md:hidden'>
           <ul className='relative z-50 flex items-center gap-5 lg:gap-8'>
-            {NAVLINKS.map(({ href, name }) => (
-              <li
-                key={href}
-                className='text-lg font-medium capitalize'
-              >
-                <Link
-                  key={name}
-                  className='w-full transition-all hover:text-white'
-                  href={href}
+            {NAVLINKS.map(({ href, name }) => {
+              const isActive = pathname === href;
+
+              return (
+                <li
+                  key={href}
+                  className='text-lg font-medium capitalize'
                 >
-                  {name}
-                </Link>
-              </li>
-            ))}
+                  <Link
+                    key={name}
+                    className={cn(
+                      'w-full transition-all hover:text-blue-500',
+                      isActive ? 'font-semibold text-white' : '',
+                    )}
+                    href={href}
+                  >
+                    {name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
         <Button
-          className='max-md:hidden'
+          className='relative z-50 max-md:hidden'
           type='button'
           variant='primary'
         >

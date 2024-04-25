@@ -12,7 +12,7 @@ function ThirdFeature() {
   return (
     <Container
       as='section'
-      className='mt-16 flex items-center justify-between gap-x-5 gap-y-7 max-md:flex-col'
+      className='mb-20 mt-16 flex items-center justify-between gap-x-5 gap-y-7 max-md:flex-col'
     >
       <div>
         <Image

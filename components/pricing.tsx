@@ -15,7 +15,6 @@ const PRICING = [
       'No credit card required',
       'Friendly supports',
     ],
-    height: '430px',
   },
   {
     plan: 'Professional',
@@ -30,7 +29,6 @@ const PRICING = [
       'Team collaboration feature.',
       'Friendly supports',
     ],
-    height: '510px',
   },
   {
     plan: 'Enterprise',
@@ -43,43 +41,49 @@ const PRICING = [
       'Team collaboration feature.',
       'Friendly supports',
     ],
-    height: '430px',
   },
 ];
 
-export default function Pricing() {
+export default function Pricing({
+  hasHeader = true,
+}: {
+  hasHeader?: boolean;
+}) {
   return (
     <section className='relative'>
-      <Container className='relative z-50 mt-20 flex flex-col items-center'>
-        <p className='flex items-center gap-3 text-white'>
-          <Image
-            alt='logo'
-            height={20}
-            src='/icons/icon-round.svg'
-            width={20}
-          />{' '}
-          <span className='text-sm font-medium'>Pricing</span>
-        </p>
+      <Container className='relative z-50 flex flex-col items-center'>
+        {hasHeader && (
+          <>
+            <p className='flex items-center gap-3 text-white'>
+              <Image
+                alt='logo'
+                height={20}
+                src='/icons/icon-round.svg'
+                width={20}
+              />{' '}
+              <span className='text-sm font-medium'>Pricing</span>
+            </p>
 
-        <h1 className='mt-2 max-w-2xl text-center text-3xl font-medium md:text-4xl lg:text-5xl'>
-          <span className='bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-transparent'>
-            A perfect plan for everybody
-          </span>
-        </h1>
+            <h1 className='mt-2 max-w-2xl text-center text-3xl font-medium md:text-4xl lg:text-5xl'>
+              <span className='bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-transparent'>
+                A perfect plan for everybody
+              </span>
+            </h1>
 
-        <p className='my-4 mb-7 max-w-2xl text-center font-medium md:text-lg'>
-          Crafted for world-class performance and developed with
-          unmatched expertise, Pulse will deliver outstanding results
-          every time, without fail.
-        </p>
+            <p className='my-4 mb-7 max-w-2xl text-center font-medium md:text-lg'>
+              Crafted for world-class performance and developed with
+              unmatched expertise, Pulse will deliver outstanding
+              results every time, without fail.
+            </p>
+          </>
+        )}
 
         <div className='relative z-[99] mx-auto flex shrink grid-cols-1 flex-wrap place-items-center justify-center gap-10 lg:grid lg:grid-cols-3'>
           {PRICING.map(
-            ({ amount, category, features, height, plan, type }) => (
+            ({ amount, category, features, plan, type }) => (
               <div
                 key={amount}
                 className='relative rounded-[22px] border border-solid border-[#292929] bg-[#1e1e1e] p-6 text-center transition-all duration-300'
-                style={{ height }}
               >
                 {type === 'popular' && (
                   <span className='absolute right-3 top-3 rounded-lg bg-blue-500/30 p-1 px-3 text-sm text-white'>
