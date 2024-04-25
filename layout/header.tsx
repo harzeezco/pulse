@@ -6,15 +6,12 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from '@/components/drawer';
 import Logo from '@/components/logo';
 import { cn } from '@/utils/cn';
-import { AlignRight, Minus, Plus } from 'lucide-react';
+import { AlignRight } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -53,57 +50,41 @@ export function DrawerBar({
 }: {
   children: React.ReactNode;
 }) {
-  const [goal, setGoal] = React.useState(350);
-
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)));
-  }
+  const pathname = usePathname();
 
   return (
     <Drawer>
-      <DrawerTrigger asChild>{children}</DrawerTrigger>
+      <DrawerTrigger asChild className='cursor-pointer'>
+        {children}
+      </DrawerTrigger>
       <DrawerContent>
-        <div className='mx-auto w-full max-w-sm'>
-          <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>
-              Set your daily activity goal.
-            </DrawerDescription>
-          </DrawerHeader>
-          <div className='p-4 pb-0'>
-            <div className='flex items-center justify-center space-x-2'>
-              <Button
-                className='size-8 shrink-0 rounded-full'
-                disabled={goal <= 200}
-                variant='outline'
-                onClick={() => onClick(-10)}
-              >
-                <Minus className='size-4' />
-                <span className='sr-only'>Decrease</span>
-              </Button>
-              <div className='flex-1 text-center'>
-                <div className='text-7xl font-bold tracking-tighter'>
-                  {goal}
+        <div className='px-6'>
+          <div className='flex flex-col gap-4'>
+            {NAVLINKS.map(({ href, name }) => {
+              const isActive = href === pathname;
+
+              return (
+                <div key={name}>
+                  <Link key={href} href={href}>
+                    <div
+                      className={cn(
+                        isActive
+                          ? 'bg-dark-400 font-semibold'
+                          : 'bg-transparent font-medium',
+                        'text-lg transition-all p-4 py-3 duration-200 hover:bg-dark-400 active:bg-dark-400 w-full rounded-2xl',
+                      )}
+                    >
+                      {name}
+                    </div>
+                  </Link>
                 </div>
-                <div className='text-[0.70rem] uppercase'>
-                  Calories/day
-                </div>
-              </div>
-              <Button
-                className='size-8 shrink-0 rounded-full'
-                disabled={goal >= 400}
-                variant='outline'
-                onClick={() => onClick(10)}
-              >
-                <Plus className='size-4' />
-                <span className='sr-only'>Increase</span>
-              </Button>
-            </div>
+              );
+            })}
           </div>
+
           <DrawerFooter>
-            <Button>Submit</Button>
             <DrawerClose asChild>
-              <Button variant='outline'>Cancel</Button>
+              <Button>Close</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>
